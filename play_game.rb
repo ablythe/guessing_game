@@ -1,20 +1,20 @@
 require './game'
 require './player'
+require './hangman'
 
-g = Game.new
+
 puts "Choose mode"
-puts "1) Human"
-puts "2) DumbAi"
-puts "3) SmartAi"
+puts "1) Guessing Game"
+puts "2) Hangman"
 choice = gets.chomp.to_i
 
-player_class = if choice == 1
-  Player
-elsif choice  == 2
-  DumbAi
+if choice == 1
+  game_class = Game
 else
-  SmartAi
+  game_class = Hangman
 end
+
+g = game_class.new
 
 p = player_class.new
 until g.over?
